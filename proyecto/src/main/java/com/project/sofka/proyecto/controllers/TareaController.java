@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin
 @RequestMapping
 @Controller("/Tareas")
 public class TareaController {
@@ -39,11 +40,13 @@ public class TareaController {
         return tareaRepository.save(tareaFromDb);
     }
 
+    @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("{id}")
     void delete(@PathVariable String id) {
         Tarea tarea = tareaRepository
                 .findById(id)
                 .orElseThrow(RuntimeException::new);
+
         tareaRepository.delete(tarea);
     }
 }
