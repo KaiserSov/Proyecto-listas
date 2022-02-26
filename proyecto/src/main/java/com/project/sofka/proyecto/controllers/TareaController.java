@@ -1,17 +1,17 @@
 package com.project.sofka.proyecto.controllers;
 
-import com.project.sofka.proyecto.model.Tarea;
-import com.project.sofka.proyecto.repo.TareaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import com.project.sofka.proyecto.model.Tarea;
+import com.project.sofka.proyecto.repo.TareaRepository;
+
 
 import java.util.List;
 
 @CrossOrigin
-@RequestMapping
-@Controller("/Tareas")
+@RestController
+@RequestMapping("/tareas")
 public class TareaController {
 
     @Autowired
@@ -28,7 +28,7 @@ public class TareaController {
         return tareaRepository.save(tarea);
     }
 
-    @PutMapping("{id")
+    @PutMapping("{id}")
     Tarea update(@PathVariable String id, @RequestBody Tarea tarea){
         Tarea tareaFromDb = tareaRepository
                 .findById(id)
