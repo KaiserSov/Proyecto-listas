@@ -2,7 +2,7 @@ import React from 'react'
 import { faCheckCircle, faEdit, faTrash, faClock } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-const ListaTareas = ({tareas}) => {
+const ListaTareas = ({tareas, onDelete}) => {
     return ( 
         <>
            <h3 className='mb-3'>Mi lista de tareas</h3>
@@ -14,7 +14,7 @@ const ListaTareas = ({tareas}) => {
                        <div className='fw-bold'>{tarea.nombre}</div>
                        <div className='text-muted small'>
                            <FontAwesomeIcon icon={faEdit} className="cursor-pointer"/>
-                           <FontAwesomeIcon icon={faTrash} className="cursor-pointer ms-2"/>
+                           <FontAwesomeIcon icon={faTrash} className="cursor-pointer ms-2" onClick={() => onDelete(tarea)}/>
                        </div>
                    </div>
 
